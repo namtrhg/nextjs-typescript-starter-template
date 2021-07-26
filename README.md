@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) 10.0, [TailwindCSS](https://tailwindcss
 for E-commerce website for serverless deployment on Vercel.
 
 ## Demo
-[Deployed on Vercel](https://nextjs-typescript-starter-template.vercel.app/)
+[Project deployed on Vercel](https://nextjs-typescript-starter-template.vercel.app/)
 
 ## Getting Started
 
@@ -14,6 +14,14 @@ Install dependencies:
 npm install
 # or
 yarn install
+```
+
+Create .env file:
+
+```bash
+BOT_EMAIL="your_bot_email"
+BOT_EMAIL_PASSWORD="your_bot_email_password"
+CONTACT_EMAIL="your_email"
 ```
 
 Run the development server:
@@ -26,10 +34,16 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+Run the prisma studio:
+
+```bash
+npx prisma studio
+```
+
+Open [http://localhost:5555](http://localhost:5555) with your browser to see the prisma studio result.
+
 ## Deploy on Vercel
 
 Once you have the project running locally you can [import](https://vercel.com/import/git) your project to Vercel and get it up and running in a few clicks.
-
-Other option is to click on the button below to create a new repository that look exactly like this one, and sets it up and running on Vercel.
 
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
