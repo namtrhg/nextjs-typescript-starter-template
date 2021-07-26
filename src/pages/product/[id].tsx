@@ -1,8 +1,6 @@
 import { PrismaClient, Product } from "@prisma/client";
-import { useState } from "react";
 import Layout from "../../components/Layout";
 import ProductImage from "../../components/ProductImage";
-import { useRouter } from "next/dist/client/router";
 
 const prisma = new PrismaClient();
 
@@ -15,11 +13,10 @@ export default function ID({ product }) {
             <img
               alt="ecommerce"
               className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
-              src={`${
-                product.images.length > 0
-                  ? product.images[0].url
-                  : "http://aquaphor.vn/wp-content/uploads/2016/06/default-placeholder.png"
-              }`}
+              src={`${product.images.length > 0
+                ? product.images[0].url
+                : "http://aquaphor.vn/wp-content/uploads/2016/06/default-placeholder.png"
+                }`}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
@@ -93,7 +90,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const products = await prisma.product.findMany();
-
   return {
     paths: products.map((product) => ({
       params: {
