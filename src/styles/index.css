@@ -1,0 +1,9 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+/* Your own custom component styles */
+
+@import "tailwindcss/utilities";
+.dropdown:hover .dropdown-menu {
+  display: block;
+}

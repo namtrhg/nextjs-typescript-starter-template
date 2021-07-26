@@ -1,0 +1,10 @@
+// Why do we need this file?
+// This was a problem because getStaticProps serializes the returned object and Date 
+// (along with a few other types) can’t be serialized. You’ll get an error like 
+// ("[object Date]") cannot be serialized as JSON. Please only return JSON serializable 
+// data type. So I found this discussion on the topic https://github.com/vercel/next.js/discussions/11498. 
+// so i ended up installing a package called babel-plugin-superjson-next and superjson
+{
+    "presets": ["next/babel"],
+    "plugins": ["superjson-next"]
+}

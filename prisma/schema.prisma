@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  url         String
+  published   Boolean   @default(true)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       String
+  available   Boolean  @default(true)
+  published   Boolean  @default(true)
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  images      Image[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  url       String
+  published Boolean  @default(true)
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Post_Category {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  published   Boolean  @default(true)
+  posts       Post[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Post {
+  id              Int           @id @default(autoincrement())
+  name            String
+  subtitle        String
+  description     String
+  url             String
+  published       Boolean       @default(true)
+  post_category   Post_Category @relation(fields: [post_categoryId], references: [id])
+  post_categoryId Int
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
